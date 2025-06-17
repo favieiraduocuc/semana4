@@ -1,0 +1,21 @@
+<div class="container my-5">
+  <h1 class="text-center mb-4 text-primary titulo-tableromania" style="font-family: 'SF Comic Script', cursive;">
+    Bienvenido a TableroMania
+  </h1>
+  <p class="lead text-center">Explora los mejores juegos de mesa por categoría</p>
+
+  <div class="row mt-4">
+    <div class="col-md-3" *ngFor="let categoria of categorias">
+      <div class="card h-100 shadow-sm border-0">
+        <img [src]="categoria.imagen" [alt]="categoria.nombre + ' imagen'" class="card-img-top">
+        <div class="card-body text-center">
+          <h5 class="card-title titulo-tableromania text-capitalize">{{ categoria.nombre }}</h5>
+          <p class="card-text text-muted">{{ categoria.descripcion }}</p>
+          <a [routerLink]="categoria.link" class="btn btn-outline-primary btn-sm mt-2">
+            <i class="fas fa-gamepad me-1"></i> Ver Juegos
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

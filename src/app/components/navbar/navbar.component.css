@@ -1,0 +1,14 @@
+.navbar-brand {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: black !important;
+}
+
+.navbar {
+  background-color: #ffc107 !important; /* amarillo */
+}
+
+.btn {
+  font-weight: bold;
+}

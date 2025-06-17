@@ -1,0 +1,120 @@
+<nav class="navbar navbar-expand-lg bg-warning">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-dark fs-4" routerLink="/">TableroMania</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav gap-2">
+        <!-- Botón Inicio -->
+        <li class="nav-item">
+          <a routerLink="/" class="btn btn-outline-dark">
+            <i class="fas fa-home me-1"></i> Inicio
+          </a>
+        </li>
+
+        <!-- Botón Login -->
+        <li class="nav-item">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fas fa-sign-in-alt me-1"></i> Iniciar sesión
+          </button>
+        </li>
+
+        <!-- Botón Registro -->
+        <li class="nav-item">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registroModal">
+            <i class="fas fa-user-plus"></i> Registrarse
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- 🔽 MODAL DE LOGIN -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario" [(ngModel)]="usuario" name="usuario" required>
+          </div>
+          <div class="mb-3">
+            <label for="contrasena" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="contrasena" [(ngModel)]="contrasena" name="contrasena" required>
+          </div>
+
+          <!-- 🔗 Enlace a modal de recuperación -->
+            <div class="mb-3 text-center">
+              <a href="#" class="text-decoration-none text-primary" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal" data-bs-dismiss="modal">
+                ¿Olvidó su contraseña?
+              </a>
+            </div>
+
+          <button type="submit" class="btn btn-primary w-100" data-bs-dismiss="modal">Ingresar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🔽 MODAL DE RECUPERAR CONTRASEÑA -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-secondary text-white">
+        <h5 class="modal-title" id="forgotPasswordLabel">Recuperar Contraseña</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo" [(ngModel)]="correo" name="correo" required>
+          </div>
+          <button type="submit" class="btn btn-success w-100" data-bs-dismiss="modal">Enviar contraseña</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 🔽 MODAL DE REGISTRO -->
+<div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content text-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registroModalLabel">Registro de Usuario</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="registrarUsuario()" #formRegistro="ngForm">
+          <input type="text" class="form-control mb-2" placeholder="Nombre completo" name="nombre" [(ngModel)]="registro.nombre" required>
+          <input type="text" class="form-control mb-2" placeholder="Usuario" name="usuario" [(ngModel)]="registro.usuario" required>
+          <input type="email" class="form-control mb-2" placeholder="Correo electrónico" name="correo" [(ngModel)]="registro.correo" required>
+          <input type="password" class="form-control mb-2" placeholder="Contraseña" name="clave" [(ngModel)]="registro.clave" required>
+          <input type="password" class="form-control mb-2" placeholder="Repetir contraseña" name="clave2" [(ngModel)]="registro.clave2" required>
+          <input type="date" class="form-control mb-2" name="fecha" [(ngModel)]="registro.fecha" required>
+          <input type="text" class="form-control mb-2" placeholder="Dirección (opcional)" name="direccion" [(ngModel)]="registro.direccion">
+
+          <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="robotCheck1" name="robot" [(ngModel)]="registro.robot" required>
+            <label class="form-check-label" for="robotCheck1">No soy un robot</label>
+          </div>
+
+          <button type="submit" class="btn btn-success w-100" [disabled]="!formRegistro.valid">Registrarse</button>
+          <button type="reset" class="btn btn-secondary w-100 mt-2">Limpiar formulario</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
